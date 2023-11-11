@@ -17,6 +17,7 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
+import javafx.scene.shape.CullFace;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Transform;
 import javafx.stage.Stage;
@@ -35,16 +36,20 @@ public class My extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Box box = prepareBox();
+        //Box box = prepareBox();
+
+        IcosahedronMesh mesh = new IcosahedronMesh();
+        mesh.setCullFace(CullFace.FRONT);
 
         SmartGroup group = new SmartGroup();
-        group.getChildren().add(box);
-        group.getChildren().add(prepareSecondBox());
+        //group.getChildren().add(box);
+        //group.getChildren().add(prepareSecondBox());
         group.getChildren().add(new AmbientLight());
+        group.getChildren().add(mesh);
 
         Camera camera = new PerspectiveCamera(true);
-        camera.setNearClip(1);
-        camera.setFarClip(1000);
+        camera.setNearClip(0.1);
+        camera.setFarClip(10000.0);
         camera.translateZProperty().set(-200);
 
         Scene scene = new Scene(group, WIDTH, HEIGHT, true);
