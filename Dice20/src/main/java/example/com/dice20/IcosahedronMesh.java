@@ -19,6 +19,7 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
+import javafx.scene.shape.DrawMode;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.TriangleMesh;
 import javafx.scene.transform.Rotate;
@@ -29,20 +30,39 @@ public class IcosahedronMesh extends MeshView {
     private final static Color[] COLORS = {
             Color.RED,
             Color.GREEN,
-            Color.BLUE,
-            Color.YELLOW,
-            Color.ORANGE,
+//            Color.BLUE,
+//            Color.YELLOW,
+//            Color.ORANGE,
+//            Color.BROWN,
+//            Color.AQUAMARINE,
+//            Color.VIOLET,
+//            Color.GREENYELLOW,
+//            Color.BISQUE,
+//            Color.WHEAT,
+//            Color.TOMATO,
+//            Color.SIENNA,
+//            Color.SALMON,
+//            Color.NAVY,
+//            Color.OLIVE,
+//            Color.MEDIUMPURPLE,
+//            Color.CORAL,
+//            Color.DEEPPINK,
+//            Color.PERU,
+//            Color.MINTCREAM
 
-            Color.AQUAMARINE,
-            Color.GREENYELLOW,
-            Color.BROWN,
     };
 
-    public IcosahedronMesh() {
-        setMesh(createCube());
+    private double scale = 1.0;
+
+    public IcosahedronMesh(double scale) {
+        this.scale = scale;
+        setMaterial(createMaterial());
+        setMesh(createIcosahedron());
+        updateScale();
+        //setDrawMode(DrawMode.FILL);
     }
 
-    private TriangleMesh createCube() {
+    private TriangleMesh createIcosahedron() {
         TriangleMesh m = new TriangleMesh();
         // coloring
         PhongMaterial mat = new PhongMaterial();
@@ -89,7 +109,47 @@ public class IcosahedronMesh extends MeshView {
                 // 3 yellow
                 0.7f, 0.5f,
                 // 4 orange
-                0.9f, 0.5f
+                0.9f, 0.5f,
+                // 5 brown
+                0.1f, 0.7f,
+                // 6 aquamarine
+                0.3f, 0.7f,
+                // 7 violet
+                0.5f, 0.7f,
+                // 8 greenyellow
+                0.7f, 0.7f,
+                // 9 bisque
+                0.9f, 0.7f,
+                // 10 wheat
+                0.1f, 0.9f,
+                // 11 tomato
+                0.3f, 0.9f,
+                // 12 sienna
+                0.5f, 0.9f,
+                // 13 salmon
+                0.7f, 0.9f,
+                // 14 navy
+                0.9f, 0.9f,
+                // 15 olive
+                0.1f, 0.3f, // This is just a placeholder; adjust as needed
+                // 16 mediumpurple
+                0.3f, 0.3f, // This is just a placeholder; adjust as needed
+                // 17 coral
+                0.5f, 0.3f, // This is just a placeholder; adjust as needed
+                // 18 deeppink
+                0.7f, 0.3f, // This is just a placeholder; adjust as needed
+                // 19 peru
+                0.9f, 0.3f
+//                // 0 red
+//                0.1f, 0.5f,
+//                // 1 green
+//                0.3f, 0.5f,
+//                // 2 blue
+//                0.5f, 0.5f,
+//                // 3 yellow
+//                0.7f, 0.5f,
+//                // 4 orange
+//                0.9f, 0.5f
                 );
         // FACES
         m.getFaces().addAll(
@@ -133,6 +193,25 @@ public class IcosahedronMesh extends MeshView {
                 2, 2, 7, 2, 9, 2,
                 // Face 20
                 8, 3, 6, 3, 2, 3);
+
         return m;
+    }
+    public double getScale() {
+        return scale;
+    }
+    public void setScale(double scale){
+        this.scale=scale;
+        updateScale();
+    }
+    private void updateScale(){
+        setScaleX(scale);
+        setScaleY(scale);
+        setScaleZ(scale);
+    }
+
+    private PhongMaterial createMaterial(){
+        PhongMaterial mat = new PhongMaterial();
+        mat.setDiffuseColor(Color.BLACK);
+        return mat;
     }
 }

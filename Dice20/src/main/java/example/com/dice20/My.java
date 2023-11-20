@@ -38,7 +38,7 @@ public class My extends Application {
     public void start(Stage primaryStage) {
         //Box box = prepareBox();
 
-        IcosahedronMesh mesh = new IcosahedronMesh();
+        IcosahedronMesh mesh = new IcosahedronMesh(100);
         mesh.setCullFace(CullFace.FRONT);
 
         SmartGroup group = new SmartGroup();
