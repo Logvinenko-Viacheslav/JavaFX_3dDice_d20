@@ -54,12 +54,14 @@ public class IcosahedronMesh extends MeshView {
 
     private double scale = 1.0;
 
-    public IcosahedronMesh(double scale) {
+    public IcosahedronMesh(double scale, int drawMo) {
         this.scale = scale;
-        setMaterial(createMaterial());
         setMesh(createIcosahedron());
+        if(drawMo == 2){
+            setMaterial(createMaterial());
+            setDrawMode(DrawMode.LINE);
+        }
         updateScale();
-        //setDrawMode(DrawMode.FILL);
     }
 
     private TriangleMesh createIcosahedron() {
@@ -209,9 +211,9 @@ public class IcosahedronMesh extends MeshView {
         setScaleZ(scale);
     }
 
-    private PhongMaterial createMaterial(){
+    private PhongMaterial createMaterial() {
         PhongMaterial mat = new PhongMaterial();
-        mat.setDiffuseColor(Color.BLACK);
+        mat.setDiffuseColor(Color.BLACK); // Set any default color for faces
         return mat;
     }
 }

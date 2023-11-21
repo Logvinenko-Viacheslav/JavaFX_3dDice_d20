@@ -37,15 +37,17 @@ public class My extends Application {
     @Override
     public void start(Stage primaryStage) {
         //Box box = prepareBox();
-
-        IcosahedronMesh mesh = new IcosahedronMesh(100);
-        mesh.setCullFace(CullFace.FRONT);
+        IcosahedronMesh mesh = new IcosahedronMesh(100, 1);
+        IcosahedronMesh meshBorder = new IcosahedronMesh(100, 2);
+        //mesh.setCullFace(CullFace.FRONT);
+        //meshBorder.setCullFace(CullFace.FRONT);
 
         SmartGroup group = new SmartGroup();
         //group.getChildren().add(box);
         //group.getChildren().add(prepareSecondBox());
         group.getChildren().add(new AmbientLight());
         group.getChildren().add(mesh);
+        group.getChildren().add(meshBorder);
 
         Camera camera = new PerspectiveCamera(true);
         camera.setNearClip(0.1);
