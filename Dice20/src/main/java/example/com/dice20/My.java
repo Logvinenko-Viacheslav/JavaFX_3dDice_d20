@@ -37,52 +37,53 @@ public class My extends Application {
     @Override
     public void start(Stage primaryStage) {
         //Box box = prepareBox();
-        IcosahedronMesh mesh = new IcosahedronMesh(100, 1);
-        IcosahedronMesh meshBorder = new IcosahedronMesh(100, 2);
+//        IcosahedronMesh mesh = new IcosahedronMesh(100, 1);
+//        IcosahedronMesh meshBorder = new IcosahedronMesh(100, 2);
         //mesh.setCullFace(CullFace.FRONT);
         //meshBorder.setCullFace(CullFace.FRONT);
 
-        SmartGroup group = new SmartGroup();
+        Dice20 shape = new Dice20();
+        shape.create();
         //group.getChildren().add(box);
         //group.getChildren().add(prepareSecondBox());
-        group.getChildren().add(new AmbientLight());
-        group.getChildren().add(mesh);
-        group.getChildren().add(meshBorder);
+//        shape.getChildren().add(new AmbientLight());
+//        shape.getChildren().add(mesh);
+//        shape.getChildren().add(meshBorder);
 
         Camera camera = new PerspectiveCamera(true);
         camera.setNearClip(0.1);
         camera.setFarClip(10000.0);
         camera.translateZProperty().set(-200);
 
-        Scene scene = new Scene(group, WIDTH, HEIGHT, true);
+        Scene scene = new Scene(shape, WIDTH, HEIGHT, true);
         scene.setFill(Color.SILVER);
         scene.setCamera(camera);
 
-        group.translateXProperty().set(0);
-        group.translateYProperty().set(0);
-        group.translateZProperty().set(0);
+        shape.translateXProperty().set(0);
+        shape.translateYProperty().set(0);
+        shape.translateZProperty().set(0);
 
-        initMouseControl(group, scene, primaryStage);
+        initMouseControl(shape, scene, primaryStage);
 
         primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
             switch (event.getCode()) {
                 case W:
-                    group.translateZProperty().set(group.getTranslateZ() + 100);
+                    shape.translateZProperty().set(shape.getTranslateZ() + 100);
                     break;
                 case S:
-                    group.translateZProperty().set(group.getTranslateZ() - 100);
+                    shape.translateZProperty().set(shape.getTranslateZ() - 100);
                     break;
                 case Q:
-                    group.rotateByX(10);
+                    shape.rotateByX(10);
                     break;
                 case E:
-                    group.rotateByX(-10);
+                    shape.rotateByX(-10);
                     break;
                 case NUMPAD6:
-                    group.rotateByY(10);
+                    shape.rotateByY(10);
                     break;
                 case NUMPAD4:
-                    group.rotateByY(-10);
+                    shape.rotateByY(-10);
                     break;
             }
         });
@@ -146,25 +147,5 @@ public class My extends Application {
 
     public static void main(String[] args) {
         launch(args);
-    }
-
-    class SmartGroup extends Group {
-
-        Rotate r;
-        Transform t = new Rotate();
-
-        void rotateByX(int ang) {
-            r = new Rotate(ang, Rotate.X_AXIS);
-            t = t.createConcatenation(r);
-            this.getTransforms().clear();
-            this.getTransforms().addAll(t);
-        }
-
-        void rotateByY(int ang) {
-            r = new Rotate(ang, Rotate.Y_AXIS);
-            t = t.createConcatenation(r);
-            this.getTransforms().clear();
-            this.getTransforms().addAll(t);
-        }
     }
 }

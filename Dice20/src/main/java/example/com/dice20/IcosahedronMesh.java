@@ -28,8 +28,9 @@ import javafx.stage.Stage;
 
 public class IcosahedronMesh extends MeshView {
     private final static Color[] COLORS = {
-            Color.RED,
-            Color.GREEN,
+            Color.LIGHTSKYBLUE
+ //           Color.RED,
+//            Color.GREEN,
 //            Color.BLUE,
 //            Color.YELLOW,
 //            Color.ORANGE,
