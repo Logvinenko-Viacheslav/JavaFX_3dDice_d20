@@ -27,6 +27,11 @@ import javafx.scene.transform.Transform;
 import javafx.stage.Stage;
 
 public class IcosahedronMesh extends MeshView {
+    private TriangleMesh triangleMesh;
+
+    public TriangleMesh getTriangleMesh(){
+        return triangleMesh;
+    }
     private final static Color[] COLORS = {
             Color.LIGHTSKYBLUE
  //           Color.RED,
@@ -66,7 +71,7 @@ public class IcosahedronMesh extends MeshView {
     }
 
     private TriangleMesh createIcosahedron() {
-        TriangleMesh m = new TriangleMesh();
+        triangleMesh = new TriangleMesh();
         // coloring
         PhongMaterial mat = new PhongMaterial();
         WritableImage image = new WritableImage(COLORS.length, 1);
@@ -76,7 +81,7 @@ public class IcosahedronMesh extends MeshView {
         mat.setDiffuseMap(image);
         setMaterial(mat);
         // POINTS
-        m.getPoints().addAll(
+        triangleMesh.getPoints().addAll(
                 // Point 1
                 0f, 0f, -0.951057f,
                 // Point 2
@@ -102,7 +107,7 @@ public class IcosahedronMesh extends MeshView {
                 // Point 12
                 0.262866f, 0.809017f, 0.425325f);
         // TEXTURES
-        m.getTexCoords().addAll(
+        triangleMesh.getTexCoords().addAll(
                 // 0 red
                 0.1f, 0.5f,
                 // 1 green
@@ -155,7 +160,7 @@ public class IcosahedronMesh extends MeshView {
 //                0.9f, 0.5f
                 );
         // FACES
-        m.getFaces().addAll(
+        triangleMesh.getFaces().addAll(
                 // Face 1
                 1, 0, 11, 0, 7, 0,
                 // Face 2
@@ -197,7 +202,7 @@ public class IcosahedronMesh extends MeshView {
                 // Face 20
                 8, 3, 6, 3, 2, 3);
 
-        return m;
+        return triangleMesh;
     }
     public double getScale() {
         return scale;
