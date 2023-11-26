@@ -31,19 +31,8 @@ public class MyViewer extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        //Box box = prepareBox();
-//        IcosahedronMesh mesh = new IcosahedronMesh(100, 1);
-//        IcosahedronMesh meshBorder = new IcosahedronMesh(100, 2);
-        //mesh.setCullFace(CullFace.FRONT);
-        //meshBorder.setCullFace(CullFace.FRONT);
-
         MyStaff shape = new MyStaff();
         shape.create();
-        //group.getChildren().add(box);
-        //group.getChildren().add(prepareSecondBox());
-//        shape.getChildren().add(new AmbientLight());
-//        shape.getChildren().add(mesh);
-//        shape.getChildren().add(meshBorder);
 
         Camera camera = new PerspectiveCamera(true);
         camera.setNearClip(0.1);
@@ -116,7 +105,6 @@ public class MyViewer extends Application {
 
     private Node prepareSecondBox() {
         PhongMaterial material = new PhongMaterial();
-       // material.setDiffuseMap(new Image(getClass().getResourceAsStream("/resources/wood.jpg")));
         Box box = new Box(20, 100, 100);
         box.setMaterial(material);
         return box;
@@ -124,7 +112,6 @@ public class MyViewer extends Application {
 
     private Box prepareBox() {
         PhongMaterial material = new PhongMaterial();
-        //material.setDiffuseMap(new Image(getClass().getResourceAsStream("/resources/wood.jpg")));
         Box box = new Box(100, 20, 50);
         box.setMaterial(material);
         return box;
