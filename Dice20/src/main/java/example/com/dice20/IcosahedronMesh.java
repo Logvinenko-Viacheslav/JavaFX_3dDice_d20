@@ -14,9 +14,9 @@ public class IcosahedronMesh extends MeshView {
     public TriangleMesh getTriangleMesh(){
         return triangleMesh;
     }
-    private final static Color[] COLORS = {
-            Color.LIGHTSKYBLUE
- //           Color.RED,
+//    private final static Color[] COLORS = {
+//            Color.LIGHTSKYBLUE,
+//            Color.RED,
 //            Color.GREEN,
 //            Color.BLUE,
 //            Color.YELLOW,
@@ -37,8 +37,8 @@ public class IcosahedronMesh extends MeshView {
 //            Color.DEEPPINK,
 //            Color.PERU,
 //            Color.MINTCREAM
-
-    };
+//
+//    };
 
     private double scale = 1.0;
 
@@ -46,8 +46,12 @@ public class IcosahedronMesh extends MeshView {
         this.scale = scale;
         setMesh(createIcosahedron());
         if(drawMo == 2){
-            setMaterial(createMaterial());
+            setMaterial(createMaterial(false));
             setDrawMode(DrawMode.LINE);
+        }
+        else{
+            setMaterial(createMaterial(true));
+
         }
         updateScale();
     }
@@ -55,13 +59,14 @@ public class IcosahedronMesh extends MeshView {
     private TriangleMesh createIcosahedron() {
         triangleMesh = new TriangleMesh();
         // coloring
-        PhongMaterial mat = new PhongMaterial();
-        WritableImage image = new WritableImage(COLORS.length, 1);
-        PixelWriter writer = image.getPixelWriter();
-        for (int i = 0; i < COLORS.length; i++)
-            writer.setColor(i, 0, COLORS[i]);
-        mat.setDiffuseMap(image);
-        setMaterial(mat);
+//        PhongMaterial mat = new PhongMaterial();
+//        WritableImage image = new WritableImage(COLORS.length, 1);
+//        PixelWriter writer = image.getPixelWriter();
+//        for (int i = 0; i < COLORS.length; i++)
+//            writer.setColor(i, 0, COLORS[i]);
+//        mat.setDiffuseMap(image);
+//        setMaterial(mat);
+        setMaterial(createMaterial(true));
         for(int i=0; i<12; i++){
             triangleMesh.getPoints().addAll(MyData.getEdge(i,0), MyData.getEdge(i,1), MyData.getEdge(i,2));
         }
@@ -129,15 +134,15 @@ public class IcosahedronMesh extends MeshView {
 //                0.7f, 0.5f,
 //                // 4 orange
 //                0.9f, 0.5f,
-//                // 5 brown
+////                // 5 brown
 //                0.1f, 0.7f,
-//                // 6 aquamarine
+////                // 6 aquamarine
 //                0.3f, 0.7f,
 //                // 7 violet
 //                0.5f, 0.7f,
-//                // 8 greenyellow
+////                // 8 greenyellow
 //                0.7f, 0.7f,
-//                // 9 bisque
+////                // 9 bisque
 //                0.9f, 0.7f,
 //                // 10 wheat
 //                0.1f, 0.9f,
@@ -148,8 +153,8 @@ public class IcosahedronMesh extends MeshView {
 //                // 13 salmon
 //                0.7f, 0.9f,
 //                // 14 navy
-//                0.9f, 0.9f,
-//                // 15 olive
+//                0.9f, 0.9f
+                // 15 olive
 //                0.1f, 0.3f, // This is just a placeholder; adjust as needed
 //                // 16 mediumpurple
 //                0.3f, 0.3f, // This is just a placeholder; adjust as needed
@@ -234,9 +239,18 @@ public class IcosahedronMesh extends MeshView {
         setScaleZ(scale);
     }
 
-    private PhongMaterial createMaterial() {
+    private PhongMaterial createMaterial(boolean isFilled) {
         PhongMaterial mat = new PhongMaterial();
-        mat.setDiffuseColor(Color.BLACK); // Set any default color for faces
+        if(isFilled){
+//            mat.setDiffuseColor(Color.rgb(30,150,100));
+            mat.setDiffuseColor(Color.BLUE);
+            mat.setSpecularColor(Color.WHITE);
+            mat.setSpecularPower(16);
+            mat.setDiffuseMap(mat.getDiffuseMap());
+        }
+        else {
+            mat.setDiffuseColor(Color.YELLOW); // Set any default color for faces
+        }
         return mat;
     }
 }

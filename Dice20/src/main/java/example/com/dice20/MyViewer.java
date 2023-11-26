@@ -4,25 +4,20 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.scene.AmbientLight;
 import javafx.scene.Camera;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.PointLight;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
-import javafx.scene.shape.CullFace;
 import javafx.scene.transform.Rotate;
-import javafx.scene.transform.Transform;
 import javafx.stage.Stage;
 
-public class My extends Application {
+public class MyViewer extends Application {
 
     private static final float WIDTH = 1400;
     private static final float HEIGHT = 700;
@@ -42,7 +37,7 @@ public class My extends Application {
         //mesh.setCullFace(CullFace.FRONT);
         //meshBorder.setCullFace(CullFace.FRONT);
 
-        Dice20 shape = new Dice20();
+        MyStaff shape = new MyStaff();
         shape.create();
         //group.getChildren().add(box);
         //group.getChildren().add(prepareSecondBox());
@@ -68,15 +63,27 @@ public class My extends Application {
         primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
             switch (event.getCode()) {
                 case W:
-                    shape.translateZProperty().set(shape.getTranslateZ() + 100);
+                    shape.translateZProperty().set(shape.getTranslateZ() + 10);
                     break;
                 case S:
-                    shape.translateZProperty().set(shape.getTranslateZ() - 100);
+                    shape.translateZProperty().set(shape.getTranslateZ() - 10);
+                    break;
+                case A:
+                    shape.translateXProperty().set(shape.getTranslateX() + 10);
+                    break;
+                case D:
+                    shape.translateXProperty().set(shape.getTranslateX() - 10);
                     break;
                 case Q:
-                    shape.rotateByX(10);
+                    shape.translateYProperty().set(shape.getTranslateY() + 10);
                     break;
                 case E:
+                    shape.translateYProperty().set(shape.getTranslateY() - 10);
+                    break;
+                case NUMPAD8:
+                    shape.rotateByX(10);
+                    break;
+                case NUMPAD2:
                     shape.rotateByX(-10);
                     break;
                 case NUMPAD6:
@@ -85,10 +92,16 @@ public class My extends Application {
                 case NUMPAD4:
                     shape.rotateByY(-10);
                     break;
+                case NUMPAD7:
+                    shape.rotateByZ(10);
+                    break;
+                case NUMPAD9:
+                    shape.rotateByZ(-10);
+                    break;
             }
         });
 
-        primaryStage.setTitle("Genuine Coder");
+        primaryStage.setTitle("My shape");
         primaryStage.setScene(scene);
         primaryStage.show();
 

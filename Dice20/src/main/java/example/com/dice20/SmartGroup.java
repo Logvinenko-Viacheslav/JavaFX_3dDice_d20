@@ -22,4 +22,10 @@ class SmartGroup extends Group {
         this.getTransforms().clear();
         this.getTransforms().addAll(t);
     }
+    void rotateByZ(int ang) {
+        r = new Rotate(ang, Rotate.Z_AXIS);
+        t = t.createConcatenation(r);
+        this.getTransforms().clear();
+        this.getTransforms().addAll(t);
+    }
 }
