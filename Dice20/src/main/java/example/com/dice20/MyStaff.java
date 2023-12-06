@@ -12,36 +12,61 @@ import javafx.scene.text.Text;
 
 public class MyStaff extends SmartGroup {
 
+    private Cylinder stick;
+    private Cylinder plate1;
+    private Cylinder plate2;
+    private Cylinder plate3;
+    private Cylinder stickBottom1;
+    private Cylinder stickBottom2;
+    private Cylinder stickBottom3;
+    private Cylinder stickBottom4;
+    private Cylinder stickBottom5;
+
+    private Cylinder stickHandle1;
+    private Cylinder stickHandle2;
+    private Cylinder stickHandle3;
+    private Cylinder stickHandle4;
+    private Cylinder stickHandle5;
+    private Cylinder stickHandle6;
+    private Cylinder stickHandle7;
+    private Cylinder stickHandle8;
+    private Cylinder stickHandle9;
+    private Cylinder stickHandle10;
+    private IcosahedronMesh mesh;
+    private IcosahedronMesh meshBorder;
+
+    private boolean isVisible = true;
+
     public void create(){
-        IcosahedronMesh mesh = new IcosahedronMesh(1, 1);
-        IcosahedronMesh meshBorder = new IcosahedronMesh(1, 2);
+        mesh = new IcosahedronMesh(1, 1);
+        meshBorder = new IcosahedronMesh(1, 2);
 
-        Cylinder stick = new Cylinder(0.5,30);
-        Cylinder plate1 = new Cylinder(1.5,0.2);
-        Cylinder plate2 = new Cylinder(1.2,0.2);
-        Cylinder plate3 = new Cylinder(0.9,0.2);
-        Cylinder stickBottom1 = new Cylinder(0.4, 0.3);
-        Cylinder stickBottom2 = new Cylinder(0.3, 0.3);
-        Cylinder stickBottom3 = new Cylinder(0.2, 0.3);
-        Cylinder stickBottom4 = new Cylinder(0.1, 0.3);
-        Cylinder stickBottom5 = new Cylinder(0.6, 0.5);
+        stick = new Cylinder(0.5,30);
+        plate1 = new Cylinder(1.5,0.2);
+        plate2 = new Cylinder(1.2,0.2);
+        plate3 = new Cylinder(0.9,0.2);
+        stickBottom1 = new Cylinder(0.4, 0.3);
+        stickBottom2 = new Cylinder(0.3, 0.3);
+        stickBottom3 = new Cylinder(0.2, 0.3);
+        stickBottom4 = new Cylinder(0.1, 0.3);
+        stickBottom5 = new Cylinder(0.6, 0.5);
 
-        Cylinder stickHandle1 = new Cylinder(0.55, 0.6);
-        Cylinder stickHandle2 = new Cylinder(0.55, 0.6);
-        Cylinder stickHandle3 = new Cylinder(0.55, 0.6);
-        Cylinder stickHandle4 = new Cylinder(0.55, 0.6);
-        Cylinder stickHandle5 = new Cylinder(0.55, 0.6);
-        Cylinder stickHandle6 = new Cylinder(0.55, 0.6);
-        Cylinder stickHandle7 = new Cylinder(0.55, 0.6);
-        Cylinder stickHandle8 = new Cylinder(0.55, 0.6);
-        Cylinder stickHandle9 = new Cylinder(0.55, 0.6);
-        Cylinder stickHandle10 = new Cylinder(0.55, 0.6);
+        stickHandle1 = new Cylinder(0.55, 0.6);
+        stickHandle2 = new Cylinder(0.55, 0.6);
+        stickHandle3 = new Cylinder(0.55, 0.6);
+        stickHandle4 = new Cylinder(0.55, 0.6);
+        stickHandle5 = new Cylinder(0.55, 0.6);
+        stickHandle6 = new Cylinder(0.55, 0.6);
+        stickHandle7 = new Cylinder(0.55, 0.6);
+        stickHandle8 = new Cylinder(0.55, 0.6);
+        stickHandle9 = new Cylinder(0.55, 0.6);
+        stickHandle10 = new Cylinder(0.55, 0.6);
 
         plate1.setTranslateY(-15);
         plate2.setTranslateY(-14.5);
         plate3.setTranslateY(-14);
         mesh.setTranslateY(-15.7);
-        meshBorder.setTranslateY(-15.75);
+        meshBorder.setTranslateY(-15.7);
         stickBottom1.setTranslateY(15);
         stickBottom2.setTranslateY(15.3);
         stickBottom3.setTranslateY(15.6);
@@ -124,4 +149,51 @@ public class MyStaff extends SmartGroup {
         this.getChildren().add(text);
     }
 
+    public void switchVisibleMod(){
+        if(isVisible) {
+            stick.setDrawMode(DrawMode.FILL);
+            plate1.setDrawMode(DrawMode.FILL);
+            plate2.setDrawMode(DrawMode.FILL);
+            plate3.setDrawMode(DrawMode.FILL);
+            stickBottom1.setDrawMode(DrawMode.FILL);
+            stickBottom2.setDrawMode(DrawMode.FILL);
+            stickBottom3.setDrawMode(DrawMode.FILL);
+            stickBottom4.setDrawMode(DrawMode.FILL);
+            stickBottom5.setDrawMode(DrawMode.FILL);
+            stickHandle1.setDrawMode(DrawMode.FILL);
+            stickHandle2.setDrawMode(DrawMode.FILL);
+            stickHandle3.setDrawMode(DrawMode.FILL);
+            stickHandle4.setDrawMode(DrawMode.FILL);
+            stickHandle5.setDrawMode(DrawMode.FILL);
+            stickHandle6.setDrawMode(DrawMode.FILL);
+            stickHandle7.setDrawMode(DrawMode.FILL);
+            stickHandle8.setDrawMode(DrawMode.FILL);
+            stickHandle9.setDrawMode(DrawMode.FILL);
+            stickHandle10.setDrawMode(DrawMode.FILL);
+            mesh.setDrawMode(DrawMode.FILL);
+        }
+        else if(!isVisible){
+            stick.setDrawMode(DrawMode.LINE);
+            plate1.setDrawMode(DrawMode.LINE);
+            plate2.setDrawMode(DrawMode.LINE);
+            plate3.setDrawMode(DrawMode.LINE);
+            stickBottom1.setDrawMode(DrawMode.LINE);
+            stickBottom2.setDrawMode(DrawMode.LINE);
+            stickBottom3.setDrawMode(DrawMode.LINE);
+            stickBottom4.setDrawMode(DrawMode.LINE);
+            stickBottom5.setDrawMode(DrawMode.LINE);
+            stickHandle1.setDrawMode(DrawMode.LINE);
+            stickHandle2.setDrawMode(DrawMode.LINE);
+            stickHandle3.setDrawMode(DrawMode.LINE);
+            stickHandle4.setDrawMode(DrawMode.LINE);
+            stickHandle5.setDrawMode(DrawMode.LINE);
+            stickHandle6.setDrawMode(DrawMode.LINE);
+            stickHandle7.setDrawMode(DrawMode.LINE);
+            stickHandle8.setDrawMode(DrawMode.LINE);
+            stickHandle9.setDrawMode(DrawMode.LINE);
+            stickHandle10.setDrawMode(DrawMode.LINE);
+            mesh.setDrawMode(DrawMode.LINE);
+        }
+        isVisible = !isVisible;
+    }
 }

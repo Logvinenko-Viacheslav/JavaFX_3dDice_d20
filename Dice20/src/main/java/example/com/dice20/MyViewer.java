@@ -52,40 +52,43 @@ public class MyViewer extends Application {
         primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
             switch (event.getCode()) {
                 case W:
-                    shape.translateZProperty().set(shape.getTranslateZ() + 10);
+                    shape.translateZProperty().set(shape.getTranslateZ() + 3);
                     break;
                 case S:
-                    shape.translateZProperty().set(shape.getTranslateZ() - 10);
+                    shape.translateZProperty().set(shape.getTranslateZ() - 3);
                     break;
                 case A:
-                    shape.translateXProperty().set(shape.getTranslateX() + 10);
+                    shape.translateXProperty().set(shape.getTranslateX() + 3);
                     break;
                 case D:
-                    shape.translateXProperty().set(shape.getTranslateX() - 10);
+                    shape.translateXProperty().set(shape.getTranslateX() - 3);
                     break;
                 case Q:
-                    shape.translateYProperty().set(shape.getTranslateY() + 10);
+                    shape.translateYProperty().set(shape.getTranslateY() + 3);
                     break;
                 case E:
-                    shape.translateYProperty().set(shape.getTranslateY() - 10);
+                    shape.translateYProperty().set(shape.getTranslateY() - 3);
                     break;
                 case NUMPAD8:
-                    shape.rotateByX(10);
+                    shape.rotateByX(3);
                     break;
                 case NUMPAD2:
-                    shape.rotateByX(-10);
+                    shape.rotateByX(-3);
                     break;
                 case NUMPAD6:
-                    shape.rotateByY(10);
+                    shape.rotateByY(3);
                     break;
                 case NUMPAD4:
-                    shape.rotateByY(-10);
+                    shape.rotateByY(-3);
                     break;
                 case NUMPAD7:
-                    shape.rotateByZ(10);
+                    shape.rotateByZ(3);
                     break;
                 case NUMPAD9:
-                    shape.rotateByZ(-10);
+                    shape.rotateByZ(-3);
+                    break;
+                case V:
+                    shape.switchVisibleMod();
                     break;
             }
         });
