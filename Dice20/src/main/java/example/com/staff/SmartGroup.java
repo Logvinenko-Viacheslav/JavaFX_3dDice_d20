@@ -1,4 +1,4 @@
-package example.com.dice20;
+package example.com.staff;
 
 import javafx.scene.Group;
 import javafx.scene.transform.Rotate;

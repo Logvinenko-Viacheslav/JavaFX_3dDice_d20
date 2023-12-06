@@ -3,6 +3,6 @@ module example.com.dice20 {
     requires javafx.fxml;
             
                             
-    opens example.com.dice20 to javafx.fxml;
-    exports example.com.dice20;
+    opens example.com.staff to javafx.fxml;
+    exports example.com.staff;
 }

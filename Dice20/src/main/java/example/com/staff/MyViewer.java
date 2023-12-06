@@ -1,4 +1,4 @@
-package example.com.dice20;
+package example.com.staff;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;

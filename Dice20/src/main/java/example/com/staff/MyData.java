@@ -1,4 +1,4 @@
-package example.com.dice20;
+package example.com.staff;
 
 public class MyData {
 
